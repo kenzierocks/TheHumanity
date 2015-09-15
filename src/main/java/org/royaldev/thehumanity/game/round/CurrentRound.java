@@ -222,6 +222,7 @@ public class CurrentRound implements Round, JSONSerializable, Snapshottable<Roun
         for (int i = 0; i < this.getPlays().size(); i++) {
             final Play p = this.getPlays().get(i);
             this.getGame().sendMessage((i + 1) + ". " + this.getBlackCard().fillInBlanks(p));
+            this.getCzar().getUser().sendMessage((i + 1) + ". " + this.getBlackCard().fillInBlanks(p));
         }
     }
 

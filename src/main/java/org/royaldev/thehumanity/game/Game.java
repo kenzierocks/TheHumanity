@@ -541,6 +541,12 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
                     this.sendMessage(IRCFormat.BOLD + czar.getUser().getNick() + IRCFormat.RESET + " is the card czar.");
                 }
                 this.sendMessage(IRCFormat.BOLD + this.getCurrentRound().getBlackCard().getText());
+                for (Player player : getPlayers()) {
+                    if (getCurrentRound().getCzar().equals(player)) {
+                        continue;
+                    }
+                    player.getUser().sendMessage(IRCFormat.BOLD + this.getCurrentRound().getBlackCard().getText());
+                }
                 this.getCurrentRound().advanceStage();
                 break;
         }
