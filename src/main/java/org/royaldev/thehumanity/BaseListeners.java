@@ -87,7 +87,7 @@ final class BaseListeners {
             t.printStackTrace();
             final StringBuilder sb = new StringBuilder("Unhandled command exception! ");
             sb.append(t.getClass().getSimpleName()).append(": ").append(t.getMessage());
-            e.getActor().sendNotice(sb.toString());
+            e.getActor().sendMessage(sb.toString());
             this.humanity.getLogger().warning(sb.toString());
         }
     }
@@ -146,7 +146,7 @@ final class BaseListeners {
             t.printStackTrace();
             final StringBuilder sb = new StringBuilder("Unhandled command exception! ");
             sb.append(t.getClass().getSimpleName()).append(": ").append(t.getMessage());
-            e.getActor().sendNotice(sb.toString());
+            e.getActor().sendMessage(sb.toString());
             this.humanity.getLogger().warning(sb.toString());
         }
     }

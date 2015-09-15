@@ -561,7 +561,7 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
         this.historicPlayers.forEach(p -> {
             if (!p.getHand().removeCards(cp.getWhiteCards())) return;
             this.deal(p);
-            p.getUser().sendNotice("Your hand has changed as a result of card pack changes. Here's your new hand!");
+            p.getUser().sendMessage("Your hand has changed as a result of card pack changes. Here's your new hand!");
             this.showCards(p);
         });
         return true;
@@ -668,7 +668,7 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
             final WhiteCard wc = hand.getCard(i);
             sb.append(i + 1).append(". ").append(IRCFormat.BOLD).append(wc.getText()).append(IRCFormat.RESET).append(" ");
         }
-        p.getUser().sendNotice(sb.toString());
+        p.getUser().sendMessage(sb.toString());
     }
 
     /**

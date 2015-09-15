@@ -138,7 +138,7 @@ public class PingRegistry implements Serializable {
         Preconditions.checkNotNull(channel, "channel was null");
         Preconditions.checkNotNull(client, "client was null");
         Preconditions.checkNotNull(nickname, "nickname was null");
-        client.sendNotice(nickname, "Your presence has been requested by " + requester.getMessagingName() + " for a game of Cards Against Humanity in " + channel.getMessagingName() + ".");
+        client.sendMessage(nickname, "Your presence has been requested by " + requester.getMessagingName() + " for a game of Cards Against Humanity in " + channel.getMessagingName() + ".");
     }
 
     public void sendNotifications(@NotNull final User requester, @NotNull final Channel channel, @NotNull final Client client, @NotNull final WhoX whoX) {

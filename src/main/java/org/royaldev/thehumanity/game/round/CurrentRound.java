@@ -123,7 +123,7 @@ public class CurrentRound implements Round, JSONSerializable, Snapshottable<Roun
                 if (czar == null) break;
                 this.displayPlays();
                 this.getGame().sendMessage(IRCFormat.BOLD + czar.getUser().getNick() + IRCFormat.RESET + " is picking a winner.");
-                czar.getUser().sendNotice("Send " + IRCFormat.BOLD + this.getGame().getHumanity().getPrefix() + "pick" + IRCFormat.RESET + " followed by the number you think should win.");
+                czar.getUser().sendMessage("Send " + IRCFormat.BOLD + this.getGame().getHumanity().getPrefix() + "pick" + IRCFormat.RESET + " followed by the number you think should win.");
                 this.reminderTask = this.makeReminderTask();
                 break;
             case ENDED:

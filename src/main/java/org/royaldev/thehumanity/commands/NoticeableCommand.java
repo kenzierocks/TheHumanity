@@ -18,7 +18,7 @@ public abstract class NoticeableCommand extends IRCCommand {
     public void notice(@NotNull final User u, @NotNull final String message) {
         Preconditions.checkNotNull(u, "u was null");
         Preconditions.checkNotNull(message, "message was null");
-        u.sendNotice(message);
+        u.sendMessage(message);
     }
 
 }
