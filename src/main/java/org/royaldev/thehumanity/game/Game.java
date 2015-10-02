@@ -542,12 +542,6 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
                     this.sendMessage(IRCFormat.BOLD + czar.getUser().getNick() + IRCFormat.RESET + " is the card czar.");
                 }
                 this.sendMessage(IRCFormat.BOLD + this.getCurrentRound().getBlackCard().getText());
-                for (Player player : getPlayers()) {
-                    if (getCurrentRound().getCzar().equals(player)) {
-                        continue;
-                    }
-                    player.getUser().sendMessage(IRCFormat.BOLD + this.getCurrentRound().getBlackCard().getText());
-                }
                 this.getCurrentRound().advanceStage();
                 break;
         }
@@ -669,6 +663,9 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
      */
     public void showCards(@NotNull final Player p) {
         Preconditions.checkNotNull(p, "p was null");
+        if (!getCurrentRound().getCzar().equals(p)) {
+            p.getUser().sendMessage(IRCFormat.BOLD + this.getCurrentRound().getBlackCard().getText());
+        }
         final StringBuilder sb = new StringBuilder();
         final Hand<WhiteCard> hand = p.getHand();
         for (int i = 0; i < hand.getSize(); i++) {
