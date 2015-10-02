@@ -673,6 +673,7 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
             sb.append(i + 1).append(". ").append(IRCFormat.BOLD).append(wc.getText()).append(IRCFormat.RESET).append(" ");
         }
         p.getUser().sendMessage(sb.toString());
+        p.getUser().sendMessage("Use !p <card> [<card>, etc.] to pick.");
     }
 
     /**
