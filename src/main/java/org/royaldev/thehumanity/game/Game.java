@@ -510,8 +510,8 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
                 final boolean hadRound = currentRound != null;
                 if (hadRound) {
                     this.previousRounds.add(currentRound.takeSnapshot());
-                    this.showScores();
-                    this.showCardCounts();
+                    // this.showScores();
+                    // this.showCardCounts();
                 }
                 int index = !hadRound ? 0 : this.getPlayers().indexOf(currentRound.getCzar()) + 1;
                 if (index >= this.getPlayers().size()) index = 0;
@@ -531,8 +531,9 @@ public class Game implements JSONSerializable, Snapshottable<GameSnapshot> {
                 if (hadRound) currentRound.cancelReminderTask();
                 this.currentRound = new CurrentRound(this, !hadRound ? 1 : currentRound.getNumber() + 1, blackCard, this.hasHouseRule(HouseRule.GOD_IS_DEAD) ? null : this.getPlayers().get(index));
                 this.deal();
-                this.sendMessage(" ");
-                this.sendMessage(IRCFormat.BOLD + "Round " + this.getCurrentRound().getNumber() + IRCFormat.RESET + "!");
+                // LESS SPAM MODE.
+                // this.sendMessage(" ");
+                // this.sendMessage(IRCFormat.BOLD + "Round " + this.getCurrentRound().getNumber() + IRCFormat.RESET + "!");
                 if (!this.hasHouseRule(HouseRule.GOD_IS_DEAD)) {
                     final Player czar = this.getCurrentRound().getCzar();
                     if (czar == null) {
