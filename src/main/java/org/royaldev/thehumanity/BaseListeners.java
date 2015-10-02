@@ -128,7 +128,10 @@ final class BaseListeners {
         if (message.isEmpty()) return;
         final List<String> split = Splitter.on(' ').omitEmptyStrings().splitToList(message.trim());
         final String commandString = split.get(0);
-        final IRCCommand command = this.humanity.getCommandHandler().get(commandString);
+        IRCCommand command = this.humanity.getCommandHandler().get(commandString);
+        if (command == null) {
+            command = this.humanity.getCommandHandler().get(commandString.substring(1));
+        }
         if (command == null) {
             ConversionHelper.respond(e, "No such command.");
             return;
